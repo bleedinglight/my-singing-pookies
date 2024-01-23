@@ -16,7 +16,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public LayerMask pookieLayer;
 
-    bool pookieActive = false;
+    public bool pookieActive = false;
 
     //wtf is an interface?? like what is any of this???
     public void OnBeginDrag(PointerEventData eventData)
@@ -37,7 +37,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnEndDrag(PointerEventData eventData)
     {
 
-        if (this.transform.position.y > 85)   
+        if (this.transform.position.y > 45)   
         {
             this.transform.SetParent(inWorld.transform);
             if (pookieActive == false)
@@ -46,7 +46,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 }
         }
 
-        else if (this.transform.position.y < 85)
+        else if (this.transform.position.y < 45)
         {
             this.transform.SetParent(hotbar.transform);
             pookieActive = false;
@@ -77,7 +77,11 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     // Update is called once per frame
     void Update()
     {
-        
-    }
+       if (this.transform.position.y < 45)
+        {
+            this.transform.SetParent(hotbar.transform);
+            pookieActive = false;
+        }
+    } 
 
 }

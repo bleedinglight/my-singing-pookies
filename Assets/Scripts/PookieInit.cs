@@ -5,13 +5,13 @@ using UnityEngine;
 public class PookieInit : MonoBehaviour
 {
 
-
-
     public GameObject pookiePrefab;
 
     private GameObject hotbar;
 
-    [SerializeField] int pookieCount = 4;
+    public int pookieCount = 4;
+
+    [SerializeField] GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,8 @@ public class PookieInit : MonoBehaviour
             pookie.transform.SetParent(hotbar.transform);
             //the pookies expand to 2.7 times scale for no reason unless i do this
             pookie.transform.localScale = new Vector3(1, 1, 1);
+            gameManager.pookieList.Add(pookie.GetComponent<PookiePickup>());
+            
         }
     }
 
