@@ -1,32 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
 
 public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
-
     //this scripts controls the ability to drag and drop the pookies from the hotbar to the world
 
     private GameObject cursorObject;
-
-    private GameObject inWorld;
-
+    //private GameObject inWorld;
     private GameObject hotbar;
-
     public LayerMask pookieLayer;
-
     bool pookieActive = false;
+    public Transform parentAfterDrag;
 
-    //wtf is an interface?? like what is any of this???
+    void Start()
+    {
+        cursorObject = GameObject.Find("CursorObject");
+        //inWorld = GameObject.Find("InWorld");
+        hotbar = GameObject.Find("Hotbar");
+    }
+
+    // wtf is an interface?? like what is any of this???
+    // fuck knows pal
     public void OnBeginDrag(PointerEventData eventData)
     {
-
+        Debug.Log("Begin Drag");
+        parentAfterDrag = transform.parent;
+        transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-
+        Debug.Log("OnDrag");
         if (pookieActive == false)
         {
             transform.position = Input.mousePosition;
@@ -36,28 +43,37 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-
-        if (this.transform.position.y > 85)   
+        Debug.Log("OnEndDrag");
+        /*if (this.transform.position.y > 85)   // if transform position = grid cell
         {
-            this.transform.SetParent(inWorld.transform);
+            Debug.Log("OnEndDrag pos.y > 85");
+            //this.transform.SetParent(inWorld.transform);
+            //parentAfterDrag = inWorld.transform;
+            
             if (pookieActive == false)
-                {
-                    pookieActive = true;
-                }
+            {
+                pookieActive = true;
+            }
         }
-
-        else if (this.transform.position.y < 85)
+        else if (this.transform.position.y < 85) // else
         {
-            this.transform.SetParent(hotbar.transform);
+            Debug.Log("OnEndDrag pos.y < 85");
+            //this.transform.SetParent(hotbar.transform);
+            parentAfterDrag = hotbar.transform;
+            Debug.Log(transform.parent);
             pookieActive = false;
-        }
+        }*/
 
-        Debug.Log(this.transform.position.y);
-       
+        if (parentAfterDrag != null)
+        {
+            transform.SetParent(parentAfterDrag);
+        }
+        //Debug.Log(this.transform.position.y);
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log("OnPointerClick");
         if (pookieActive == true)
         {
             this.transform.SetParent(hotbar.transform);
@@ -65,19 +81,17 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void CheckForGridSlot()
     {
-        cursorObject = GameObject.Find("CursorObject");
-        inWorld = GameObject.Find("InWorld");
-        hotbar = GameObject.Find("Hotbar");
+        Debug.Log("Checking for grid slot");
+        if (parentAfterDrag.transform.parent.GetComponent<InventorySlot>() == null)
+        {
+            this.transform.SetParent(hotbar.transform);
+            pookieActive = false;
+        }
+        else
+        {
+            pookieActive = true;
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }
