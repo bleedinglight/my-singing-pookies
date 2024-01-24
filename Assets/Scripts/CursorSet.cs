@@ -5,6 +5,9 @@ using UnityEngine;
 public class CursorSet : MonoBehaviour
 {
 
+
+    //im not gonna comment this because its just a cursor lol
+
     private GameObject cursorObject;
 
 

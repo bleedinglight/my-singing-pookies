@@ -16,7 +16,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public LayerMask pookieLayer;
 
-    public bool pookieActive = false;
+    public PookieData pookieData;
 
     //wtf is an interface?? like what is any of this???
     public void OnBeginDrag(PointerEventData eventData)
@@ -27,7 +27,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
 
-        if (pookieActive == false)
+        if (pookieData.pookieActive == false)
         {
             transform.position = Input.mousePosition;
         }
@@ -40,16 +40,16 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (this.transform.position.y > 45)   
         {
             this.transform.SetParent(inWorld.transform);
-            if (pookieActive == false)
+            if (pookieData.pookieActive == false)
                 {
-                    pookieActive = true;
+                    pookieData.pookieActive = true;
                 }
         }
 
         else if (this.transform.position.y < 45)
         {
             this.transform.SetParent(hotbar.transform);
-            pookieActive = false;
+            pookieData.pookieActive = false;
         }
 
         Debug.Log(this.transform.position.y);
@@ -58,10 +58,10 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (pookieActive == true)
+        if (pookieData.pookieActive == true)
         {
             this.transform.SetParent(hotbar.transform);
-            pookieActive = false;
+            pookieData.pookieActive = false;
         }
     }
 
@@ -80,7 +80,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
        if (this.transform.position.y < 45)
         {
             this.transform.SetParent(hotbar.transform);
-            pookieActive = false;
+            pookieData.pookieActive = false;
         }
     } 
 
