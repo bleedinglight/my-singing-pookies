@@ -9,16 +9,13 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     //this scripts controls the ability to drag and drop the pookies from the hotbar to the world
 
     private GameObject cursorObject;
-    //private GameObject inWorld;
     private GameObject hotbar;
     public LayerMask pookieLayer;
-    bool pookieActive = false;
     public Transform parentAfterDrag;
 
     void Start()
     {
         cursorObject = GameObject.Find("CursorObject");
-        //inWorld = GameObject.Find("InWorld");
         hotbar = GameObject.Find("Hotbar");
     }
 
@@ -34,10 +31,8 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("OnDrag");
-        if (pookieActive == false)
-        {
-            transform.position = Input.mousePosition;
-        }
+
+        transform.position = Input.mousePosition;
         
     }
 
@@ -74,11 +69,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log("OnPointerClick");
-        if (pookieActive == true)
-        {
-            this.transform.SetParent(hotbar.transform);
-            pookieActive = false;
-        }
+        this.transform.SetParent(hotbar.transform);
     }
 
     public void CheckForGridSlot()
@@ -87,11 +78,23 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (parentAfterDrag.transform.parent.GetComponent<InventorySlot>() == null)
         {
             this.transform.SetParent(hotbar.transform);
-            pookieActive = false;
         }
-        else
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("entered trigger");
+        if (other.CompareTag("Grid"))
         {
-            pookieActive = true;
+            parentAfterDrag = other.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (parentAfterDrag != gameObject.transform.parent)
+        {
+            this.transform.SetParent(hotbar.transform);
         }
     }
 }
