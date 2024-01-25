@@ -79,7 +79,14 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (parentAfterDrag.parent.GetComponent<InventorySlot>() == null)
         {
             this.transform.SetParent(hotbar.transform);
+            pookieData.pookieActive = false;
         }
+        else 
+        {
+            pookieData.pookieActive = true;
+        }
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
