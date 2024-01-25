@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Round UI")]
 
-    public int roundCount = 0;
+    public int roundCount = 1;
 
     public GameObject progButton;
 
@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < pookieCount; i++)
         {
-            Debug.Log("pookie ^-^");
             GameObject pookie = Instantiate(pookieTypes[Random.Range(0, pookieTypes.Count)], transform.position, Quaternion.identity);
             pookie.transform.SetParent(hotbar.transform);
 

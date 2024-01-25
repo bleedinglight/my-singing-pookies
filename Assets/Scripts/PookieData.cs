@@ -9,16 +9,44 @@ public class PookieData : MonoBehaviour
     public int pookieID;
     private AudioSource audioSource;
 
+    private Animator animator;
+
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        if(this.GetComponent<Animator>() != null)   
+        {
+            animator = this.GetComponent<Animator>();
+        }
     }
 
     public void PlayAudio()
     {
+        Debug.Log("PlayedAudio");
+
         if (pookieActive == true)
         {
-            audioSource.PlayOneShot(audioSource.clip);
+            Debug.Log("FUCKING DO IT");
+            if (!audioSource.isPlaying) 
+            {
+                audioSource.Play();
+            }
+            
+        }
+    }
+
+    void Update() 
+    {
+        if (this.GetComponent<Animator>() != null) 
+        {
+            if (pookieActive == true)
+            {
+                animator.SetBool("pookieActive", true);
+            } 
+            else 
+            {
+                animator.SetBool("pookieActive", false);
+            }
         }
     }
 }
