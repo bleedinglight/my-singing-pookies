@@ -75,14 +75,16 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void CheckForGridSlot()
     {
-        Debug.Log("Checking for grid slot");
-        if (parentAfterDrag.parent.GetComponent<InventorySlot>() == null)
+        Debug.Log("Checking for grid slot, parentAfterDrag = " + parentAfterDrag);
+        if (parentAfterDrag.GetComponent<InventorySlot>() == null)
         {
+            Debug.Log("Inventory slot == null");
             this.transform.SetParent(hotbar.transform);
             pookieData.pookieActive = false;
         }
         else 
         {
+            Debug.Log("Inventory slot != null");
             pookieData.pookieActive = true;
         }
 

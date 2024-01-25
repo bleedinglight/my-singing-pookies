@@ -45,9 +45,7 @@ public class GameManager : MonoBehaviour
 
         hotbar = GameObject.Find("Hotbar");
 
-        PookieInit();
-
-        
+        PookieInit();       
     }
 
     // Update is called once per frame
@@ -127,7 +125,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < pookieCount; i++)
         {
-
+            Debug.Log("pookie ^-^");
             GameObject pookie = Instantiate(pookieTypes[Random.Range(0, pookieTypes.Count)], transform.position, Quaternion.identity);
             pookie.transform.SetParent(hotbar.transform);
 
@@ -157,7 +155,23 @@ public class GameManager : MonoBehaviour
         checking = true;
 
     }
+
+    void PlayAllAudio()
+    {
+        for (int i = 0; i < pookieList.Count; i++)
+        {
+            pookieList[i].PlayAudio();
+        }
+    }
+
+    /*void SaveAudio()
+    {
+        for (int i = 0; i < pookieList.Count; i++)
+        {
+            if (pookieList[i].pookieActive)
+            {
+
+            }
+        }
+    }*/
 }
-
-
-
