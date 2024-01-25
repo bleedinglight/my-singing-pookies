@@ -15,13 +15,8 @@ GameObject:
   - component: {fileID: 3652401867629118333}
   - component: {fileID: 5058767477092674667}
   - component: {fileID: 8144093602471394375}
-  - component: {fileID: 2254393091268372289}
   m_Layer: 6
-<<<<<<<< HEAD:Assets/Prefabs/Birb1.prefab
   m_Name: Birb1
-========
-  m_Name: Pookie
->>>>>>>> 42d605eb064579a2d64325db6b7589f8b1f9f172:Assets/Prefabs/Pookie.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,13 +94,9 @@ MonoBehaviour:
   pookieLayer:
     serializedVersion: 2
     m_Bits: 64
-<<<<<<<< HEAD:Assets/Prefabs/Birb1.prefab
+  parentAfterDrag: {fileID: 0}
   pookieData: {fileID: 3652401867629118333}
 --- !u!114 &3652401867629118333
-========
-  parentAfterDrag: {fileID: 0}
---- !u!114 &7313451878020433288
->>>>>>>> 42d605eb064579a2d64325db6b7589f8b1f9f172:Assets/Prefabs/Pookie.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,6 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pookieActive: 0
+  pookieID: 0
 --- !u!61 &5058767477092674667
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +153,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 100, y: 100}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &8144093602471394375
 MonoBehaviour:
@@ -183,30 +175,3 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!50 &2254393091268372289
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6238487939169885355}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

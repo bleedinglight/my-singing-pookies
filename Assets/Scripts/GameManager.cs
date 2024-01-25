@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public int pookieActiveCount = 0;
 
-    public bool checking = true;
+    public bool checking = false;
 
     [Header("UI")]
 

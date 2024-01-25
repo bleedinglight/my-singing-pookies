@@ -12,6 +12,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private GameObject hotbar;
     public LayerMask pookieLayer;
     public Transform parentAfterDrag;
+    public PookieData pookieData;
 
     void Start()
     {
@@ -75,7 +76,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void CheckForGridSlot()
     {
         Debug.Log("Checking for grid slot");
-        if (pookieData.parentAfterDrag.transform.parent.GetComponent<InventorySlot>() == null)
+        if (parentAfterDrag.parent.GetComponent<InventorySlot>() == null)
         {
             this.transform.SetParent(hotbar.transform);
         }
