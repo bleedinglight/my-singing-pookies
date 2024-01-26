@@ -123,6 +123,8 @@ public class GameManager : MonoBehaviour
 
         checking = false;
 
+        
+
         for (int i = 0; i < pookieCount; i++)
         {
             GameObject pookie = Instantiate(pookieTypes[Random.Range(0, pookieTypes.Count)], transform.position, Quaternion.identity);
