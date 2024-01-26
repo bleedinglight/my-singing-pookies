@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AudioSource))]
 public class MainMenu : MonoBehaviour
@@ -15,6 +17,7 @@ public class MainMenu : MonoBehaviour
     private bool loading;
     private AudioSource audioSource;
     [SerializeField] private GameObject settingsUI;
+    [SerializeField] private GameObject mainText;
 
     private void Awake()
     {
@@ -34,12 +37,12 @@ public class MainMenu : MonoBehaviour
             }
             else if (fadingIn && shitpissIndustriesLogo.color.a >= 1)
             {
-                audioSource.PlayOneShot(audioSource.clip);
+                PlayIntroSound();
                 timer -= Time.deltaTime;
                 if (timer <= 0)
                 {
                     fadingIn = false;
-                    timer = logoScreenTime;
+                    timer = logoScreenTime / 2;
                 }
             }
             else if (!fadingIn && shitpissIndustriesLogo.color.a > 0)
@@ -52,6 +55,7 @@ public class MainMenu : MonoBehaviour
                 if (timer <= 0)
                 {
                     menuScreen.SetActive(true);
+                    mainText.SetActive(true);
                     loading = false;
                 }
             }
@@ -72,11 +76,21 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-
+        SceneManager.LoadScene(1);
     }
 
-    public void OpenSettings()
+    public void ExitGame()
     {
+        Application.Quit();
+    }
 
+    bool introPlayed;
+    public void PlayIntroSound()
+    {
+        if (!introPlayed)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+            introPlayed = true;
+        }
     }
 }

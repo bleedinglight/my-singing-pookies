@@ -6,14 +6,18 @@ using UnityEngine.EventSystems;
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
     public int slotID;
+    public bool isOccupied;
 
     public void OnDrop(PointerEventData eventData)
     {
-        GameObject dropped = eventData.pointerDrag;
-        PookiePickup pookiePickup = dropped.GetComponent<PookiePickup>();
-        //PookieData pookieData = dropped.GetComponent<PookieData>();
-        pookiePickup.parentAfterDrag = transform;
+        if (!isOccupied)
+        {
+            GameObject dropped = eventData.pointerDrag;
+            PookiePickup pookiePickup = dropped.GetComponent<PookiePickup>();
+            //PookieData pookieData = dropped.GetComponent<PookieData>();
+            pookiePickup.parentAfterDrag = transform;
 
-        pookiePickup.CheckForGridSlot();
+            pookiePickup.CheckForGridSlot();
+        }
     }
 }
