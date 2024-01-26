@@ -64,14 +64,14 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            if (pookieActiveCount == pookieCount)
-            {
-                progButton.SetActive(true);
-            }
-            else
-            {
-                progButton.SetActive(false);
-            }
+            // if (pookieActiveCount == pookieCount)
+            // {
+            //     progButton.SetActive(true);
+            // }
+            // else
+            // {
+            //     progButton.SetActive(false);
+            // }
 
             Debug.Log(pookieActiveCount);
         }    
