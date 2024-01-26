@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        roundText = GameObject.Find("RoundText").GetComponent<TMPro.TextMeshProUGUI>();
+        //roundText = GameObject.Find("RoundText").GetComponent<TMPro.TextMeshProUGUI>();
         roundText.text = "Round " + roundCount;
 
         hotbar = GameObject.Find("Hotbar");
@@ -123,8 +123,6 @@ public class GameManager : MonoBehaviour
 
         checking = false;
 
-        
-
         for (int i = 0; i < pookieCount; i++)
         {
             GameObject pookie = Instantiate(pookieTypes[Random.Range(0, pookieTypes.Count)], transform.position, Quaternion.identity);
@@ -157,7 +155,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void PlayAllAudio()
+    public void PlayAllAudio()
     {
         for (int i = 0; i < pookieList.Count; i++)
         {

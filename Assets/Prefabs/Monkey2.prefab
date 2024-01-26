@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5058767477092674667}
   - component: {fileID: 8144093602471394375}
   - component: {fileID: 7011610286524989417}
-  - component: {fileID: 2250400883504795559}
+  - component: {fileID: 5052547324531843577}
   m_Layer: 6
   m_Name: Monkey2
   m_TagString: Untagged
@@ -64,14 +64,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.63555235, g: 0.9339623, b: 0.5697757, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: abf8b6197a147c64e9977d059cc45be2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 196985de013efb14c997b8fadd672218, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -273,7 +273,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &2250400883504795559
+--- !u!95 &5052547324531843577
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ Animator:
   m_GameObject: {fileID: 6238487939169885355}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9046a2b204bb57b4f8094e11f2d928ef, type: 2}
+  m_Controller: {fileID: 9100000, guid: 58ca5e20c292cca42a48dc1208d700ff, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

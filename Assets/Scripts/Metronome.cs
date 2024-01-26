@@ -5,7 +5,7 @@ using UnityEngine;
 public class Metronome : MonoBehaviour
 {
 
-    const float INTERVAL = 0.5f;
+    const float INTERVAL = 16.0f;
 
     public float timer = 0f;
 
