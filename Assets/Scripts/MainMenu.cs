@@ -14,12 +14,14 @@ public class MainMenu : MonoBehaviour
     private bool fadingIn;
     private bool loading;
     private AudioSource audioSource;
+    [SerializeField] private GameObject settingsUI;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         timer = logoScreenTime;
         fadingIn = true;
+        loading = true;
     }
 
     private void Update()
@@ -50,10 +52,10 @@ public class MainMenu : MonoBehaviour
                 if (timer <= 0)
                 {
                     menuScreen.SetActive(true);
+                    loading = false;
                 }
             }
         }
-
     }
 
     void FadeIn()
