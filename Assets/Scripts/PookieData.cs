@@ -22,8 +22,6 @@ public class PookieData : MonoBehaviour
 
     public void PlayAudio()
     {
-        Debug.Log("PlayedAudio");
-
         if (pookieActive == true)
         {
             Debug.Log("FUCKING DO IT");

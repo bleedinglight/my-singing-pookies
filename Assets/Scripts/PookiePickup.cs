@@ -24,22 +24,18 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     // fuck knows pal
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Begin Drag");
         parentAfterDrag = transform.parent;
         transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("OnDrag");
-
         transform.position = Input.mousePosition;
         
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
         /*if (this.transform.position.y > 45)   // if transform position = grid cell
         {
             Debug.Log("OnEndDrag pos.y > 85");
@@ -62,29 +58,41 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (parentAfterDrag != null)
         {
-            transform.SetParent(parentAfterDrag);
+            if (!parentAfterDrag.GetComponent<InventorySlot>().isOccupied)
+            {
+                this.transform.SetParent(parentAfterDrag);
+                parentAfterDrag.GetComponent<InventorySlot>().isOccupied = true;
+            }
+            else
+            {
+                this.transform.SetParent(hotbar.transform);
+            }
+            //transform.SetParent(parentAfterDrag);
         }
         //Debug.Log(this.transform.position.y);
     }
 
     public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log("OnPointerClick");
+    {;
+        if (this.transform.parent.GetComponent<InventorySlot>().isOccupied)
+        {
+            this.transform.parent.GetComponent<InventorySlot>().isOccupied = false;
+        }
         this.transform.SetParent(hotbar.transform);
     }
 
     public void CheckForGridSlot()
     {
-        Debug.Log("Checking for grid slot, parentAfterDrag = " + parentAfterDrag);
+        //Debug.Log("Checking for grid slot, parentAfterDrag = " + parentAfterDrag);
         if (parentAfterDrag.GetComponent<InventorySlot>() == null)
         {
-            Debug.Log("Inventory slot == null");
+            //Debug.Log("Inventory slot == null");
             this.transform.SetParent(hotbar.transform);
             pookieData.pookieActive = false;
         }
         else 
         {
-            Debug.Log("Inventory slot != null");
+            //Debug.Log("Inventory slot != null");
             pookieData.pookieActive = true;
         }
 
@@ -93,7 +101,7 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("entered trigger");
+        //Debug.Log("entered trigger");
         if (other.CompareTag("Grid"))
         {
             parentAfterDrag = other.transform;

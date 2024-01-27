@@ -18,6 +18,7 @@ public class MainMenu : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private GameObject settingsUI;
     [SerializeField] private GameObject mainText;
+    [SerializeField] private GameObject cursorObj;
 
     private void Awake()
     {
@@ -56,6 +57,7 @@ public class MainMenu : MonoBehaviour
                 {
                     menuScreen.SetActive(true);
                     mainText.SetActive(true);
+                    cursorObj.SetActive(true);
                     loading = false;
                 }
             }
