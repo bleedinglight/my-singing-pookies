@@ -8,6 +8,18 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public int slotID;
     public bool isOccupied;
 
+    void Update()
+    {
+        if (transform.childCount > 0)
+        {
+            isOccupied = true;
+        }
+        else
+        {
+            isOccupied = false;
+        }
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         if (!isOccupied)

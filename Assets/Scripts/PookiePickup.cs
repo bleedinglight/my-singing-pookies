@@ -58,10 +58,10 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (parentAfterDrag != null)
         {
-            if (!parentAfterDrag.GetComponent<InventorySlot>().isOccupied)
+            if (parentAfterDrag.GetComponent<InventorySlot>() != null && !parentAfterDrag.GetComponent<InventorySlot>().isOccupied)
             {
                 this.transform.SetParent(parentAfterDrag);
-                parentAfterDrag.GetComponent<InventorySlot>().isOccupied = true;
+                //parentAfterDrag.GetComponent<InventorySlot>().isOccupied = true;
             }
             else
             {
@@ -73,11 +73,11 @@ public class PookiePickup : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     }
 
     public void OnPointerClick(PointerEventData eventData)
-    {;
-        if (this.transform.parent.GetComponent<InventorySlot>().isOccupied)
+    {
+        /*if (this.transform.parent.GetComponent<InventorySlot>() != null && this.transform.parent.GetComponent<InventorySlot>().isOccupied)
         {
             this.transform.parent.GetComponent<InventorySlot>().isOccupied = false;
-        }
+        }*/
         this.transform.SetParent(hotbar.transform);
     }
 

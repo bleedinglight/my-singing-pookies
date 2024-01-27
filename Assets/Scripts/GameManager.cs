@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
             //     progButton.SetActive(false);
             // }
 
-            Debug.Log(pookieActiveCount);
+            //Debug.Log(pookieActiveCount);
         }    
     }
 
